@@ -6,7 +6,7 @@
 }
 
 body {
-    background: #fff;
+    background: #FCFAF7
 }
 
 .container {
@@ -17,7 +17,14 @@ body {
 
 /* Header Styles */
 header {
-    padding: 20px 0;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    background: #FCFAF7;
+    justify-content: space-between;
+    align-items: center;
     border-bottom: 1px solid #f0f0f0;
 }
 
@@ -40,24 +47,28 @@ nav {
 
 /* Estilos para la barra de navegación */
 .nav-links a {
-    text-decoration: none;
-    color: #333;
     position: relative;
-    transition: color 0.3s ease, border-color 0.3s ease; /* Transición suave para el color */
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    text-decoration: none;
+    margin-left: 0px; 
+    transition: color 0.3s ease; /* Transición para el color */
 }
 
-.nav-links a.active {
-    color: #C7932B; /* Color del enlace activo */
-}
-
-.nav-links a.active::after {
+.nav-links a::after {
     content: '';
     position: absolute;
     bottom: -5px;
     left: 0;
-    width: 100%;
+    width: 0;
     height: 2px;
-    background-color: #C7932B;
+    background: #C7932B;
+    transition: width 0.3s ease; /* Transición para la línea */
+}
+
+.nav-links a.active {
+    color: #C7932B; /* Color del enlace activo */
 }
 
 .nav-links a:hover {
@@ -65,18 +76,22 @@ nav {
 }
 
 .nav-links a:hover::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: #C7932B;
+    width: 100%; /* La línea se expande al hacer hover */
 }
 
 .nav-icons {
     display: flex;
     gap: 20px;
+}
+
+/* Añadir este estilo a tu archivo CSS */
+.nav-icons svg {
+    cursor: pointer; /* Aseguramos que el cursor cambie al pasar sobre los íconos */
+    transition: transform 0.3s ease; /* Para un efecto visual atractivo cuando se hace clic */
+}
+
+.nav-icons svg:hover {
+    transform: scale(1.1); /* Aumenta un poco el tamaño al hacer hover para efecto visual */
 }
 
 /* Hero Section */
@@ -166,7 +181,7 @@ nav {
 .product-card {
     border-radius: 10px;
     overflow: hidden;
-    background: #f8f9fa;
+    background: #FFFFFF;
 }
 
 .product-card img {
@@ -200,8 +215,8 @@ nav {
 
 /* Footer Styles */
 footer {
-    background-color: #333;
-    color: #fff;
+    background-color: #FFFFFF;
+    color: #2c3e50;
     padding: 40px 20px;
     font-family: 'Montserrat', sans-serif;
 }
@@ -212,13 +227,20 @@ footer {
     margin-bottom: 20px;
 }
 
+.footer-logo {
+    max-width: 90px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+
 .footer-left, .footer-middle, .footer-right {
     width: 30%;
 }
 
 .footer-left h3 {
     font-size: 2em;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .footer-left p {
@@ -256,7 +278,7 @@ footer {
 }
 
 .footer-middle ul li a {
-    color: #fff;
+    color: #2c3e50;
     text-decoration: none;
     font-size: 1.1em;
     transition: color 0.3s ease;
@@ -278,5 +300,58 @@ footer {
 }
 
 .footer-bottom p {
-    color: #bbb;
+    color: #475b70;
+}
+
+#search-form, #user-modal, #cart-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: none;
+}
+
+#search-form input, #user-modal input {
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 100%;
+}
+
+.modal-content {
+    padding: 20px;
+}
+
+button {
+    padding: 10px;
+    background-color: #ffcc00;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ff9900;
+}
+
+.footer-links {
+    color: #2c3e50;
+}
+
+.footer-title {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px; /* Espacio entre el texto y la línea */
+}
+
+.footer-title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 300px;  /* Se extiende por todo el ancho del contenedor */
+    height: 2px;  /* Grosor de la línea */
+    background-color: #C7932B;  /* Color de la línea */
 }
